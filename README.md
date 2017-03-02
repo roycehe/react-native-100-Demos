@@ -1,13 +1,7 @@
 # react-native-100-Demos
-<<<<<<< HEAD
 1. LoginView
 2. ListView
 3. NineBoxs
+![](https://github.com/roycehe/react-native-100-Demos/blob/master/listview.png)
+![](https://github.com/roycehe/react-native-100-Demos/blob/master/NineBoxs.png)
 
-
-
-=======
-1LoninView
-
-2ListView
->>>>>>> f792467c04adf3de9904a9c95d69ffe8d8e31541
