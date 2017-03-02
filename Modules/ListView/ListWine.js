@@ -47,6 +47,7 @@ var WineList = React.createClass({
             <View style={styles.cellStyle}>
                {/*左图*/}
                <Image source={{uri:rowData.image}} style={styles.imageStyle} ></Image>
+
                 {/*右View*/}
                 <View style={styles.rightStyle} >
                     <Text style={styles.nameStyle}>{rowData.name}</Text>

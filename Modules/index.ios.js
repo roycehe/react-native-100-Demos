@@ -11,13 +11,14 @@ import {
   Text,
   View
 } from 'react-native';
-var Listwine = require('./ListView/ListWine');
+// var Listwine = require('./ListView/ListWine');
 // var Loginview = require('./Login/LoginView');
+var  NineBox = require('./NineBox/NineBox');
 export default class Modules extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Listwine />
+        <NineBox />
 
       </View>
     );
@@ -26,6 +27,7 @@ export default class Modules extends Component {
 
 const styles = StyleSheet.create({
   container: {
+
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
