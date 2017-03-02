@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="a4ab9a33-4388-4d9f-bab6-3e5e010ad8be" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/Modules/ListW.js" afterPath="" />
@@ -8,6 +9,9 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Modules/ListWine.js" afterPath="$PROJECT_DIR$/Modules/ListWine.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Modules/index.ios.js" afterPath="$PROJECT_DIR$/Modules/index.ios.js" />
     </list>
+=======
+    <list default="true" id="a4ab9a33-4388-4d9f-bab6-3e5e010ad8be" name="Default" comment="" />
+>>>>>>> f792467c04adf3de9904a9c95d69ffe8d8e31541
     <ignored path="react-native-100-Demos.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -28,6 +32,7 @@
     <favorites_list name="react-native-100-Demos" />
   </component>
   <component name="FileEditorManager">
+<<<<<<< HEAD
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="index.ios.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Modules/index.ios.js">
@@ -56,10 +61,14 @@
         </entry>
       </file>
     </leaf>
+=======
+    <leaf />
+>>>>>>> f792467c04adf3de9904a9c95d69ffe8d8e31541
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+<<<<<<< HEAD
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -70,6 +79,8 @@
       </list>
     </option>
   </component>
+=======
+>>>>>>> f792467c04adf3de9904a9c95d69ffe8d8e31541
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
@@ -77,7 +88,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
     <option name="x" value="12" />
+=======
+>>>>>>> f792467c04adf3de9904a9c95d69ffe8d8e31541
     <option name="y" value="22" />
     <option name="width" value="1280" />
     <option name="height" value="739" />
@@ -129,6 +143,27 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+<<<<<<< HEAD
+=======
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="react-native-100-Demos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="react-native-100-Demos" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ios" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+>>>>>>> f792467c04adf3de9904a9c95d69ffe8d8e31541
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -144,12 +179,15 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+<<<<<<< HEAD
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/Modules" />
     </key>
+=======
+>>>>>>> f792467c04adf3de9904a9c95d69ffe8d8e31541
   </component>
   <component name="RunManager">
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -177,12 +215,15 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+<<<<<<< HEAD
       <node-interpreter>project</node-interpreter>
       <node-options />
       <gulpfile />
       <tasks />
       <arguments />
       <envs />
+=======
+>>>>>>> f792467c04adf3de9904a9c95d69ffe8d8e31541
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -217,16 +258,27 @@
       <option name="presentableId" value="Default" />
       <updated>1488424467536</updated>
       <workItem from="1488424468987" duration="23000" />
+<<<<<<< HEAD
       <workItem from="1488424494527" duration="407000" />
       <workItem from="1488425273928" duration="1039000" />
+=======
+      <workItem from="1488424494527" duration="7000" />
+>>>>>>> f792467c04adf3de9904a9c95d69ffe8d8e31541
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="1469000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="12" y="22" width="1280" height="739" extended-state="0" />
+=======
+    <option name="totallyTimeSpent" value="30000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="22" width="1280" height="739" extended-state="6" />
+>>>>>>> f792467c04adf3de9904a9c95d69ffe8d8e31541
     <editor active="false" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2494043" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -273,6 +325,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/Modules/index.ios.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -347,5 +400,7 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> f792467c04adf3de9904a9c95d69ffe8d8e31541
   </component>
 </project>
