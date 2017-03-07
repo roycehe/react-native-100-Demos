@@ -9,25 +9,24 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
 } from 'react-native';
-<<<<<<< HEAD
+
 // var Listwine = require('./ListView/ListWine');
 // var Loginview = require('./Login/LoginView');
-var  NineBox = require('./NineBox/NineBox');
-=======
-var Listwine = require('./ListWine');
->>>>>>> f792467c04adf3de9904a9c95d69ffe8d8e31541
+// var  NineBox = require('./NineBox/NineBox');
+// var SectionHeader = require('./SectionAttached/SectionTop');
+var NetEase = require('./NetEase/Tabar');
+// var Main = require('./Component/XMGMain');
 export default class Modules extends Component {
+
   render() {
     return (
       <View style={styles.container}>
-<<<<<<< HEAD
-        <NineBox />
-=======
-        <Listwine />
->>>>>>> f792467c04adf3de9904a9c95d69ffe8d8e31541
 
+        {/*<SectionHeader />*/}
+
+        <NetEase />
       </View>
     );
   }
@@ -35,10 +34,6 @@ export default class Modules extends Component {
 
 const styles = StyleSheet.create({
   container: {
-<<<<<<< HEAD
-
-=======
->>>>>>> f792467c04adf3de9904a9c95d69ffe8d8e31541
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
