@@ -34,7 +34,7 @@ var TabBar= React.createClass({
                        barTintColor="black"
             >
                 <TabBarIOS.Item
-                    style={{flex:1}}
+
                     title="首页"
                     icon= {require('./TabBar/tabbar_home.png')}
                     selected={this.state.selectedItem === 'home'}
@@ -44,6 +44,7 @@ var TabBar= React.createClass({
                         });
                     }}>
                     <NavigatorIOS
+                        style={{flex:1}}
                         tintColor = "orange"
                         initialRoute = {
                         {
@@ -59,7 +60,7 @@ var TabBar= React.createClass({
                 </TabBarIOS.Item>
                 {/*发现*/}
                 <TabBarIOS.Item
-                    style={{flex:1}}
+
                     title="发现"
                     icon= {require('./TabBar/tabbar_discover.png')}
                     selected={this.state.selectedItem === 'discover'}
@@ -69,6 +70,7 @@ var TabBar= React.createClass({
                         });
                     }}>
                     <NavigatorIOS
+                        style={{flex:1}}
                         tintColor = "orange"
                         initialRoute = {
                         {
@@ -81,7 +83,6 @@ var TabBar= React.createClass({
                 </TabBarIOS.Item>
                 {/*消息*/}
                 <TabBarIOS.Item
-                    style={{flex:1}}
                     title="消息"
                     icon= {require('./TabBar/tabbar_message_center.png')}
                     selected={this.state.selectedItem === 'message'}
@@ -91,6 +92,7 @@ var TabBar= React.createClass({
                         });
                     }}>
                     <NavigatorIOS
+                        style={{flex:1}}
                         tintColor = "orange"
                         initialRoute = {
                         {
@@ -103,7 +105,7 @@ var TabBar= React.createClass({
                 </TabBarIOS.Item>
                 {/*我的*/}
                 <TabBarIOS.Item
-                    style={{flex:1}}
+
                     title="我的"
                     icon= {require('./TabBar/tabbar_profile.png')}
                     selected={this.state.selectedItem === 'mine'}
@@ -113,6 +115,7 @@ var TabBar= React.createClass({
                         });
                     }}>
                     <NavigatorIOS
+                        style={{flex:1}}
                         tintColor = "orange"
                         initialRoute = {
                         {

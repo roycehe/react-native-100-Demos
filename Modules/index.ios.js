@@ -16,17 +16,16 @@ import {
 // var Loginview = require('./Login/LoginView');
 // var  NineBox = require('./NineBox/NineBox');
 // var SectionHeader = require('./SectionAttached/SectionTop');
-var NetEase = require('./NetEase/Tabar');
+// var NetEase = require('./NetEase/Tabar');
 // var Main = require('./Component/XMGMain');
+var Main = require('./RoyceEC/Main/Main');
 export default class Modules extends Component {
 
   render() {
     return (
       <View style={styles.container}>
+        <Main />
 
-        {/*<SectionHeader />*/}
-
-        <NetEase />
       </View>
     );
   }
@@ -38,7 +37,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-    marginTop:20,
+    // marginTop:20,
+
   },
 
 });

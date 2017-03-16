@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 
         // justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#ffffff',
+        backgroundColor: 'red',
         // position:'relative',
     },
     headerImage:{
