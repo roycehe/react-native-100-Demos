@@ -8,14 +8,20 @@ import {
     Text,
     View,
 } from 'react-native';
-
-
+let NaviBar = require('../Common/NaviBar');
+// let Limit = require('./LimitBuyView');
 var Shop = React.createClass({
 
     render(){
         return (
             <View style={styles.container}>
-                <Text>商店</Text>
+                <NaviBar
+                    _titleName = '商家'
+                    _rightIcon = 'icon_shop_search'
+                    _leftIcon = 'icon_shop_local'
+
+                />
+                {/*<Limit />*/}
             </View>
             )
 
@@ -27,10 +33,7 @@ var Shop = React.createClass({
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#F5FCFF',
-        marginTop:20,
     },
 
 });

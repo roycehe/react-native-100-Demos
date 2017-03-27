@@ -19,6 +19,7 @@ import {
 // var NetEase = require('./NetEase/Tabar');
 // var Main = require('./Component/XMGMain');
 var Main = require('./RoyceEC/Main/Main');
+
 export default class Modules extends Component {
 
   render() {
@@ -34,8 +35,8 @@ export default class Modules extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
     backgroundColor: '#F5FCFF',
     // marginTop:20,
 

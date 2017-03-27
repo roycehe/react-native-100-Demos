@@ -7,17 +7,25 @@ import {
     StyleSheet,
     Text,
     View,
+    ScrollView
 } from 'react-native';
 
-var Dimensions = require('Dimensions');
-var {width, height} = Dimensions.get('window');
+let Dimensions = require('Dimensions');
+let {width, height} = Dimensions.get('window');
+let Header = require('./MineHeaderView');
+let Menu = require('./MineMenuView');
 var Mine = React.createClass({
 
     render(){
         return (
-            <View style={styles.container}>
+            <ScrollView style={styles.container}
+            contentInset={{top:-200}}
+            contentOffset={{y:200}}
 
-            </View>
+            >
+                <Header />
+                <Menu />
+            </ScrollView>
 
             )
 
@@ -28,11 +36,8 @@ var Mine = React.createClass({
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
+
         backgroundColor: '#F5FCFF',
-        marginTop:20,
 
     },
 

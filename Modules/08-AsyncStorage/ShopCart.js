@@ -1,27 +1,25 @@
 /**
- * Sample React Native App
- * https://github.com/facebook/react-native
+ * Created by hexiaowen on 2017/3/20.
  */
-
 import React, { Component } from 'react';
 import {
     AppRegistry,
     StyleSheet,
     Text,
-    View
+    View,
 } from 'react-native';
 
-var Message = React.createClass({
+export default class Modules extends Component {
+
     render() {
         return (
             <View style={styles.container}>
-                <Text style={styles.welcome}>
-                    消息
-                </Text>
+
+
             </View>
         );
     }
-});
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -29,13 +27,8 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#F5FCFF',
-    },
-    welcome: {
-        fontSize: 20,
-        textAlign: 'center',
-        margin: 10,
-    }
-});
+        // marginTop:20,
 
-// 输出类
-module.exports = Message;
+    },
+
+});

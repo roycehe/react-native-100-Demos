@@ -11,17 +11,21 @@ import {
     ScrollView
 } from 'react-native';
 
-var Dimensions = require('Dimensions');
-var {width, height} = Dimensions.get('window');
+let Dimensions = require('Dimensions');
+let {width, height} = Dimensions.get('window');
 
-var TitleCell = require('../Common/TitleAndArrowView');
-var NaviBar = require('../Common/NavigationBar');
+let TitleCell = require('../Common/TitleAndArrowView');
+let NaviBar = require('../Common/NaviBar');
 var More = React.createClass({
 
     render(){
         return(
         <View style={styles.container}>
-            <NaviBar />
+            <NaviBar
+                _titleName = '更多'
+                _rightIcon = 'icon_mine_setting'
+
+            />
             <ScrollView >
 
                 <TitleCell

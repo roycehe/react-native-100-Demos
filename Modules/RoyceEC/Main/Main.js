@@ -1,108 +1,91 @@
-/**
- * Created by hexiaowen on 2017/3/11.
- */
-/**
- * Created by hexiaowen on 2017/3/11.
- */
 import React, { Component } from 'react';
 import {
     AppRegistry,
     StyleSheet,
     Text,
     View,
-    Navigator,
-    Image
-
+    Image,
+    Navigator
 } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
-
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
 var Home = require('../Home/Home');
 var Shop = require('../Shop/Shop');
-var  Mine = require('../Mine/Mine');
+var Mine = require('../Mine/Mine');
 var More = require('../More/More');
+export default class Main extends Component {
 
-var Main = React.createClass({
-    getInitialState(){
-      return{
+    constructor(props) {
+        super(props);
+        this.state = {
 
-          selectedTab:'home'
-
-      }
-
-
-    },
-
-    render(){
-        return(
-        <TabNavigator style={styles.tabStyle}>
-            {/*首页*/}
-            {this.renderItem('home','icon_tabbar_homepage','icon_tabbar_homepage_selected','home','首页',Home)}
-            {/*商家*/}
-            {this.renderItem('shop','icon_tabbar_merchant_normal','icon_tabbar_merchant_selected','shop','商家',Shop)}
-            {/*我的*/}
-            {this.renderItem('mine','icon_tabbar_mine','icon_tabbar_mine_selected','mine','我的',Mine)}
-            {/*更多*/}
-            {this.renderItem('more','icon_tabbar_misc','icon_tabbar_misc_selected','more','更多',More)}
-        </TabNavigator>
-        )
-
-    },
-    renderItem(selected, renderIcon, renderSelectedIcon, nameTitle, ctitle, Component,index){
-        return (
-            <TabNavigator.Item
-                selected={this.state.selectedTab === selected}
-                title = {ctitle}
-                renderIcon={() => <Image style={styles.itemIcomSytle}  source={{uri: renderIcon}} />}
-                renderSelectedIcon={() => <Image style={styles.itemIcomSytle}  source={{uri: renderSelectedIcon}} />}
-                selectedTitleStyle = {styles.titlesStyle}
-                onPress={() => this.setState({ selectedTab: selected })}>
-                <Navigator
-                    initialRoute={{name: nameTitle, index: index}}
-                    renderScene={(route, navigator) =>
-                        <Component
-                            name={route.name}
-                            onForward={() => {
-                                var nextIndex = route.index + 1;
-                                navigator.push({
-                                    name: nameTitle + nextIndex,
-                                    index: nextIndex,
-                                });
-                            }}
-                            onBack={() => {
-                                if (route.index > 0) {
-                                    navigator.pop();
-                                }
-                            }}
-                        />
-                    }
-                /></TabNavigator.Item>
-        )
-
+            selectedTab: 'home',
+        };
     }
+    render() {
 
+        return (
+                <TabNavigator
+                    tabBarStyle={{ height: 49, width:width }}
+                    tintColor='orange'
+                >
+                    {this._renderTabItem('home','首页',Home,'icon_tabbar_homepage','icon_tabbar_homepage_selected')}
+                    {this._renderTabItem('shop','商家',Shop,'icon_tabbar_merchant_normal','icon_tabbar_merchant_selected')}
+                    {this._renderTabItem('mine','我的',Mine,'icon_tabbar_mine','icon_tabbar_mine_selected')}
+                    {this._renderTabItem('more','更多',More,'icon_tabbar_misc','icon_tabbar_misc_selected')}
+                </TabNavigator>
 
-});
+        );
+    };
+    _renderTabItem(selectedTitle,name,component,icon,selectedIcon){
+      return(
+          <TabNavigator.Item
+              selected={this.state.selectedTab === selectedTitle}
+              title={name}
+              renderIcon={() => <Image style={styles.imgStyle} source={{uri:icon}}  />}
+              renderSelectedIcon={() => <Image style={styles.imgStyle} source={{uri:selectedIcon}}  />}
+              onPress={() => this.setState({ selectedTab: selectedTitle })}
+              selectedTitleStyle={{color:'orange'}}
+          >
+
+              <Navigator
+                  initialRoute={{ name: name, component:  component }}
+                  //配置场景
+                  configureScene=
+                      {
+                          (route) => {
+
+                              //这个是页面之间跳转时候的动画，具体有哪些？可以看这个目录下，有源代码的: node_modules/react-native/Libraries/CustomComponents/Navigator/NavigatorSceneConfigs.js
+
+                              return Navigator.SceneConfigs.PushFromRight;
+                          }
+                      }
+                  renderScene={
+                      (route, navigator) =>
+                      {
+                          let Component = route.component;
+                          return <Component {...route.params} navigator={navigator} />
+                      }
+                  } />
+
+          </TabNavigator.Item>
+      )
+
+    };
+}
 
 const styles = StyleSheet.create({
-    tabStyle: {
+    container: {
         flex: 1,
-            justifyContent: 'center',
-            alignItems: 'center',
-            backgroundColor: '#F5FCFF',
-            // marginTop:20,
-        width:width,
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        backgroundColor: '#F5FCFF',
     },
-    itemIcomSytle:{
-        width:30,
-        height:30,
-
+    imgStyle: {
+        width: 28,
+        height: 28,
     },
-    titlesStyle:{
-
-        color:'orange'
-    }
 
 });
 

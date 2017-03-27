@@ -9,16 +9,33 @@ import {
     View,
     TextInput,
     Image,
-    TouchableOpacity
+    ScrollView,
+    TouchableOpacity,
+    TabNavigator
+
 } from 'react-native';
 var Dimensions = require('Dimensions');
 var {width, height} = Dimensions.get('window');
+var TopScrollView = require('./TopScrollView');
+var EventTop = require('./EventView');
+var EventBottom = require('./EventBottomView');
+var ShopCenterView = require('./ShopCenterView');
+var ShopDetail = require('./ShopCenterDetail');
 var Home = React.createClass({
 
     render(){
         return(
             <View style={styles.container}>
                 {this.renderNavi()}
+                {/*菜单*/}
+                <ScrollView >
+                    <TopScrollView style={styles.topViewStyle} />
+                    <EventTop />
+                    <EventBottom />
+                    <ShopCenterView
+                        popDataToHome = {(url,name) => this._pushDetailView(url,name)}
+                    />
+                </ScrollView>
             </View>
             )
 
@@ -35,11 +52,45 @@ var Home = React.createClass({
                     <Image source={{uri:'icon_homepage_message.png'}} style={styles.iconStyle}/>
                     <Image source={{uri:'icon_homepage_scan.png'}} style={styles.iconStyle}/>
                 </View>
+
+
+
             </View>
 
         );
 
-    }
+    },
+    _pushDetailView(url,name){
+        const { navigator } = this.props;
+        if(navigator) {
+            navigator.push({
+                name: name,
+                component: ShopDetail,
+                params:{
+                    Durl:url,
+                    shopName:name
+                }
+            })
+        }
+        // this.props.navigator.push(
+        //     {
+        //     //要去的页面
+        //     component:ShopDetail,
+        //     passProps:{
+        //         url:this._dealWithUrl(url),
+        //         name:name
+        //     },
+        //     title:name,
+        //     }
+        // );
+
+
+
+    },
+    _dealWithUrl(url){
+        return url.replace('imeituan://www.meituan.com/web/?url=', '');
+    },
+
 
 });
 
@@ -51,6 +102,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#F5FCFF',
         // marginTop:20,
     },
+    //导航条
     navigatorStyle:{
 
         width:width,
@@ -94,7 +146,9 @@ const styles = StyleSheet.create({
         height:28,
         width:28,
 
-    }
+    },
+//    菜单
+
 
 
 });
