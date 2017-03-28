@@ -18,14 +18,14 @@ import {
 // var SectionHeader = require('./SectionAttached/SectionTop');
 // var NetEase = require('./NetEase/Tabar');
 // var Main = require('./Component/XMGMain');
-var Main = require('./RoyceEC/Main/Main');
-
+// var Main = require('./RoyceEC/Main/Main');
+let NetRequset = require('./NetRequest/NetRequest');
 export default class Modules extends Component {
 
   render() {
     return (
       <View style={styles.container}>
-        <Main />
+        <NetRequset />
 
       </View>
     );
