@@ -9,7 +9,7 @@ import {
     View,
 } from 'react-native';
 let NaviBar = require('../Common/NaviBar');
-// let Limit = require('./LimitBuyView');
+let Limit = require('./ShopTopView');
 var Shop = React.createClass({
 
     render(){
@@ -21,7 +21,7 @@ var Shop = React.createClass({
                     _leftIcon = 'icon_shop_local'
 
                 />
-                {/*<Limit />*/}
+                <Limit />
             </View>
             )
 
