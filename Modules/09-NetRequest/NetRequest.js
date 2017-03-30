@@ -19,12 +19,9 @@ export default  class NetRequest extends Component{
     constructor(props){
         super(props);
         this.state = {
-
             isConnected:null,
             connectInfo:'',
-
         };
-
     };
 
     render(){

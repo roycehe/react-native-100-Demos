@@ -21,6 +21,7 @@ var EventTop = require('./EventView');
 var EventBottom = require('./EventBottomView');
 var ShopCenterView = require('./ShopCenterView');
 var ShopDetail = require('./ShopCenterDetail');
+var Location = require('../../10-Location/Location');
 var Home = React.createClass({
 
     render(){
@@ -36,6 +37,7 @@ var Home = React.createClass({
                         popDataToHome = {(url,name) => this._pushDetailView(url,name)}
                     />
                 </ScrollView>
+                <Location />
             </View>
             )
 
