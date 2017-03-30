@@ -20,6 +20,7 @@ import {
 // var Main = require('./Component/XMGMain');
 var Shop = require('./RoyceEC/Main/Main');
 // let NetRequset = require('./NetRequest/NetRequest');
+
 export default class Modules extends Component {
 
   render() {
