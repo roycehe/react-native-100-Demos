@@ -6,42 +6,43 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry,
-  StyleSheet,
-  Text,
-  View,
+    AppRegistry,
+    StyleSheet,
+    Text,
+    View,
 } from 'react-native';
 
-// var Listwine = require('./ListView/ListWine');
-// var Loginview = require('./Login/LoginView');
-// var  NineBox = require('./NineBox/NineBox');
-// var SectionHeader = require('./SectionAttached/SectionTop');
-// var NetEase = require('./NetEase/Tabar');
-// var Main = require('./Component/XMGMain');
-var Shop = require('./RoyceEC/Main/Main');
+// let Listwine = require('./ListView/ListWine');
+// let Loginview = require('./Login/LoginView');
+// let  NineBox = require('./NineBox/NineBox');
+// let SectionHeader = require('./SectionAttached/SectionTop');
+// let NetEase = require('./NetEase/Tabar');
+// let Main = require('./Component/XMGMain');
+// let Shop = require('./RoyceEC/Main/Main');
 // let NetRequset = require('./NetRequest/NetRequest');
+let Gesture = require('./11-Gesture/Gesture');
 
 export default class Modules extends Component {
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Shop />
+    render() {
+        return ( 
+          <View style = { styles.container } >
+            <Gesture />
 
-      </View>
-    );
-  }
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    // justifyContent: 'center',
-    // alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    // marginTop:20,
+    container: {
+        flex: 1,
+        // justifyContent: 'center',
+        // alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+        // marginTop:20,
 
-  },
+    },
 
 });
 

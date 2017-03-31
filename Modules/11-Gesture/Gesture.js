@@ -1,38 +1,41 @@
 import React, { Component } from 'react';
 import {
-    AppRegistry,
-    StyleSheet,
-    Text,
-    View,
-    PanResponder,
-    TouchableOpacity,
-    ProgressViewIOS
-
+  AppRegistry,
+  StyleSheet,
+  Text,
+  PanResponder,
+  ProgressViewIOS,
+  View
 } from 'react-native';
-import Gesture from 'Geolocation';
-
-import Dimensions from 'Dimensions';
+let Dimensions = require('Dimensions');
 let { width, height } = Dimensions.get('window');
 
-export default class Location extends Component {
+export default class Gesture extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            progess: 0,
+            progress : 0,
+            _PanResponder:null
 
         }
 
     };
-
+    
     render() {
 
-        return ( <
-            View style = { styles.containerStyle } >
-            <
-            Text style = { styles.textStyle } > { this.state.longitude } < /Text> <
-            Text style = { styles.textStyle } > { this.state.longitude } < /Text> <
-            /View>
+        return ( 
+             <View style={styles.containerStyle}>
+                <ProgressViewIOS 
+                style={styles.ProgressViewStyle}
+                progress={this.state.progress}
+                />
+                <Text style={styles.textStyle}>当前百分比{Math.round(this.state.progress * 100)}%</Text>
+                {/*由于progress比较小,所有用一个背景透明的view来响应事件*/}
+                <View style={styles.touchViewStyle}
+                {...this._PanResponder.panHandlers}
+                ></View>
+            </View>
 
 
         );
@@ -40,46 +43,70 @@ export default class Location extends Component {
 
 
     };
-
-    componentWillMount() {
-        this.watch = PanResponder.create({
+        // 添加监视器
+    componentWillMount() { 
+        this._PanResponder = PanResponder.create({
             onStartShouldSetPanResponder: () => true,
-            onPanResponderGrant: this._onPanResponderGrant,
-            onPanResponderMove: this._onPanResponderMove,
-
+            //点击回调
+            onPanResponderGrant:this._onPanResponderGrant.bind(this),
+            //滑动回调
+            onPanResponderMove:this._onPanResponderMove.bind(this),
         });
 
     };
-    componentDidMount() {
+    //event原生事件
+    //gestureState对象
+    _onPanResponderGrant(event,gestureState){
 
-
-
+        let touchPointX = gestureState.x0
+        let progress = touchPointX / width;
+        console.log(touchPointX,width,progress);
+        this.setState({progress:progress,});
     };
+    _onPanResponderMove(event,gestureState) {
+        let touchMoveX = gestureState.moveX
+        let progress = touchMoveX / width;
+        console.log(touchMoveX,width,progress);
+        this.setState({progress:progress});
 
+     }
+    
 
 
 
 
 }
+
 const styles = StyleSheet.create({
 
     containerStyle: {
         flex: 1,
-        alignItems: 'center'
-
-
-
     },
+    
     ProgressViewStyle: {
-        width: 20,
+         position:'absolute',
+         width: width,
+         top: 50,
+     },
+    touchViewStyle: {
+        width: width,
+        top:30,
+        height:40,
+        position:'absolute',
+        backgroundColor:'transparent'
 
 
-    }
-
+    }, 
+    textStyle: {
+    left: 20,
+    top: 100,
+     position:'absolute',
+    fontSize: 20,
+   
+  },
 
 
 
 });
 
-// 输出组件类
 module.exports = Gesture;
