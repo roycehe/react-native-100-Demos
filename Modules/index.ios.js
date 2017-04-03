@@ -20,14 +20,15 @@ import {
 // let Main = require('./Component/XMGMain');
 // let Shop = require('./RoyceEC/Main/Main');
 // let NetRequset = require('./NetRequest/NetRequest');
-let Gesture = require('./11-Gesture/Gesture');
+// let Gesture = require('./11-Gesture/Gesture');
+let Dog = require('./13-23DogVideo/DTabBar');
 
 export default class Modules extends Component {
 
     render() {
         return ( 
           <View style = { styles.container } >
-            <Gesture />
+            <Dog />
 
             </View>
         );

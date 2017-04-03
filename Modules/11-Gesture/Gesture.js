@@ -72,9 +72,6 @@ export default class Gesture extends Component {
      }
     
 
-
-
-
 }
 
 const styles = StyleSheet.create({
