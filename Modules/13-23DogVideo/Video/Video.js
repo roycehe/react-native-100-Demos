@@ -96,6 +96,7 @@ export default class Upload extends Component {
           this._useLocalData();
         
     };
+    //请求网络数据
     componentDidMount () {
         this._getNetData();
     }
