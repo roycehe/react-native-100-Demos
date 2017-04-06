@@ -11,96 +11,100 @@ import {
     Text,
     View,
     Navigator,
-    Image
+    Image,
+    TouchableOpacity
 } from 'react-native';
 
-import TabNavigator from 'react-native-tab-navigator';
+// import TabNavigator from 'react-native-tab-navigator';
 
-let Dimensions = require('Dimensions');
-let {width, height} = Dimensions.get('window');
-let Video = require('./Video/Video');
-let More = require('./More/More');
-let Upload = require('./Upload/Upload');
+import Icon from 'react-native-vector-icons/Ionicons';
 
-export default class Login extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-        selectedTab:'Video'
+export default class BabyShowTab extends Component {
+    static propTypes = {
+        goToPage:React.PropTypes.func,//跳转二级页面
+        activeTab:React.PropTypes.number,//当前选中下标
+        tabs:React.PropTypes.array,//所有tabitem
 
-        }
+        tabTitles:React.PropTypes.array,//item名称
+        tabIconName:React.PropTypes.array,//图片名称
+    };
+    static defaultProps = {
+        goToPage:null,//跳转二级页面
+        activeTab:0,//当前选中下标
+        tabs:[],//所有tabitem
 
-
+        tabTitles:[],//item名称
+        tabIconNames:[],//图片名称
     }
-    render() {
-        return ( 
-          <View style = { styles.container } >
-            <TabNavigator
-                    tabBarStyle={{ height: 49, width:width }}
-                    tintColor='black'
-                >
-                    {this._renderTabItem('Video','Video',Video,'video-1','video_h')}
-                    {this._renderTabItem('Upload','Upload',Upload,'加号','加号-fill')}
-                    {this._renderTabItem('More','More',More,'other','other_h')}
-                </TabNavigator>
 
+
+
+    render() {
+         console.log(this.props);
+        return ( 
+          <View style = {styles.container} style={styles.tabBar}>
+                {this.props.tabs.map((tab,i) => this.renderTabOption(tab,i))}
+               
             </View>
         );
     };
-
-     _renderTabItem(selectedTitle,name,component,icon,selectedIcon){
-      return(
-          <TabNavigator.Item
-              selected={this.state.selectedTab === selectedTitle}
-              title={name}
-              renderIcon={() => <Image style={styles.iconStyle} source={{uri:icon}}  />}
-              renderSelectedIcon={() => <Image style={styles.iconStyle} source={{uri:selectedIcon}}  />}
-              onPress={() => this.setState({ selectedTab: selectedTitle })}
-              selectedTitleStyle={{color:'black'}}
-          >
-
-              <Navigator
-                  initialRoute={{ name: name, component:  component }}
-                  //配置场景
-                  configureScene=
-                      {
-                          (route) => {
-
-                              //这个是页面之间跳转时候的动画，具体有哪些？可以看这个目录下，有源代码的: node_modules/react-native/Libraries/CustomComponents/Navigator/NavigatorSceneConfigs.js
-
-                              return Navigator.SceneConfigs.PushFromRight;
-                          }
-                      }
-                  renderScene={
-                      (route, navigator) =>
-                      {
-                          let Component = route.component;
-                          return <Component {...route.params} navigator={navigator} />
-                      }
-                  } />
-
-          </TabNavigator.Item>
-      )
+    componentDidMount () {
+        //动画监听
+        this.props.scrollValue.addListener(this.setAnimationValue);
+    };
+    setAnimationValue(value){
+            console.log('donghua'+value);
 
     };
+    renderTabOption(tab,i){
+        //判断当前是否选中 设置不同颜色
+        let color = this.props.activeTab == i ? '#ee735c' : '#ADADAD';
+
+        return(
+            <TouchableOpacity 
+            activeOpacity={0.7}
+            onPress={() => this.props.goToPage(i)}
+            style={styles.tab} 
+            key={tab}>
+                <View 
+                style={styles.tabItem}
+                >
+                    <Icon
+                    name={this.props.tabIconNames[i]}
+                    size={30}
+                    color={color}
+                    />
+                    <Text
+                    style={{color:color}}
+                    >
+                    {this.props.tabTitles[i]}
+                    </Text>
+                </View>
+            </TouchableOpacity>
+        );
+
+    };
+
 }
 
-
-
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        // justifyContent: 'center',
-        // alignItems: 'center',
-        backgroundColor: '#F5FCFF',
-        // marginTop:20,
+    
+    tabBar: {
+       flexDirection:'row',
+       height:50,
+       backgroundColor:'#e8e8e8'
 
     },
-    iconStyle: {
-        width: 28,
-        height: 28,
+    tab: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    tabItem: {
+        flexDirection: 'column',
+        alignItems: 'center',
     },
 
 
 });
-module.exports = Login;
+module.exports = BabyShowTab;
