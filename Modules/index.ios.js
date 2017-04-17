@@ -21,15 +21,17 @@ import {
 // let Shop = require('./RoyceEC/Main/Main');
 // let NetRequset = require('./NetRequest/NetRequest');
 // let Gesture = require('./11-Gesture/Gesture');
-let Baby = require('./13-23DogVideo/MainApp.js');
-
+let Baby = require('./13-23BabyShow/MainApp.js');
+// let RNFS = require('./react-native-fs/fs.js');
+// let Navigator = require('./React Navigation/Navigation.js');
 export default class Modules extends Component {
 
     render() {
         return ( 
           <View style = { styles.container } >
-            <Baby />
 
+              <Baby />
+            
             </View>
         );
     }

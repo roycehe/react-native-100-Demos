@@ -6,7 +6,9 @@ import {
     View,
     ListView,
     Platform,
-    Image
+    Image,
+    RefreshControl,
+    ActivityIndicator
 } from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -17,6 +19,14 @@ import request from '../request.js';
 import Dimensions from 'Dimensions';
 
 let {width,height} = Dimensions.get('window');
+
+let cacheData={
+    nextPage:2,
+    total:0,
+    items:[],
+
+};
+
 export default class Upload extends Component {
     constructor(props){
         super(props);
@@ -26,7 +36,9 @@ export default class Upload extends Component {
         this.state = {
             dataSource:ds.cloneWithRows([
                    
-                ])
+                ]),
+                isLoadingTail:false,
+                isRefreshing:false,
 
         }
 
@@ -34,6 +46,7 @@ export default class Upload extends Component {
 
 
     render() {
+        
         return ( 
           <View style = { styles.container } >
               <View style={styles.header}>
@@ -47,12 +60,20 @@ export default class Upload extends Component {
             renderRow={this._renderRow}
             automaticallyAdjustContentInsets={false}
             enableEmptySections={true}
-            />
+            onEndReached={this._fetchMoreData}
+            renderFooter={this._renderFooter}
+            onEndReachedThreshold={20}
+            refreshControl= { <RefreshControl
+                            refreshing={this.state.isRefreshing}
+                            onRefresh={this._onRefresh}
+                        />}
 
+            />
+        
             </View>
         );
     };
-    _renderRow(rowData){
+    _renderRow=(rowData)=>{
         return(
             <View style={styles.cell}>
                 {/*标题*/}
@@ -91,6 +112,41 @@ export default class Upload extends Component {
 
 
     }
+     //底部
+    _renderFooter=()=>{
+        if(!this._hasMore ){
+            return (<View style={styles.loadingMore}>
+                <Text style={styles.loadingText}>没有更多数据啦...</Text>
+            </View>);
+        }
+        console.log(cacheData.total);
+        if(!this.state.isLoadingTail){
+            return <View style={styles.loadingMore}/>
+        }
+        
+        return (
+
+            <ActivityIndicator
+            style={styles.loadingMore}
+            />
+
+        );
+    };
+
+    //刷新方法
+    _onRefresh=()=>{
+        this.setState({
+            isRefreshing:true,
+
+        })
+        cacheData.items=[];
+        this._getNetData(1);
+        
+
+
+    }
+
+
     //预加载本地
     componentWillMount () {
           this._useLocalData();
@@ -98,22 +154,51 @@ export default class Upload extends Component {
     };
     //请求网络数据
     componentDidMount () {
-        this._getNetData();
+        this._getNetData(1);
     }
-    _getNetData(){
+    _getNetData(page){
+        //是否上拉加载
+        if (page > 1) {
+            this.setState({
+                isLoadingTail:true,
+            });
+            cacheData.nextPage += 1;
+        } else {
+            
+        }
+
 
         request.get(config.api.base+config.api.list, {
-            accessToken:'owen'
+            accessToken:'owen',
+            page:page,
 
         })
         .then((data) => {
              if(data){
-                    this.setState({
-                        dataSource:this.state.dataSource.cloneWithRows(
-                            data.data
-                        ),
-                    });
+                //延迟一秒加载
+                let duration = 500;
+                if(this.state.isRefreshing){
+                    duration = 1500
+
                 }
+                this.setTimeout(()=> {
+                     let itemsResult = cacheData.items.slice();
+                     itemsResult = itemsResult.concat(data.data);
+                 cacheData.items = itemsResult;
+                 cacheData.total = data.total;
+                 console.log(cacheData.total, cacheData.items.length);
+                     this.setState({
+                        dataSource:this.state.dataSource.cloneWithRows(
+                            cacheData.items
+                        ),
+                        isLoadingTail:false,
+                         isRefreshing:false,
+                    });
+                    
+                }, duration);
+
+                    
+             }
         }).catch(
             (err) => {
                 console.log('err' + err);
@@ -121,7 +206,24 @@ export default class Upload extends Component {
         )
        
     };
-    
+    //上拉加载更多数据
+     _fetchMoreData=()=>{
+
+        if(!this._hasMore || this.state.isLoadingTail){
+            return
+        }
+
+        //去服务器请求加载更多的数据了
+
+        let page=  cacheData.nextPage;
+
+        this._getNetData(page)
+
+    };
+    _hasMore(){
+        return cacheData.items.length !== cacheData.total;
+
+    };
 
 
     //本地数据
@@ -150,6 +252,7 @@ export default class Upload extends Component {
     }
     //网络请求数据
 
+   
 
 }
 
@@ -186,11 +289,19 @@ const styles = StyleSheet.create({
         height:width*0.56,
         resizeMode:'cover'
     },
-    cellPlay:{
+     cellPlay:{
         position:'absolute',
-        bottom:20,
-        right:20,
-
+        bottom:14,
+        right:14,
+        width:46,
+        height:46,
+        paddingTop:9,
+        paddingLeft:18,
+        backgroundColor:'transparent',
+        borderColor:'#000',
+        borderWidth:1,
+        borderRadius:23,
+        color:'#ed7b66'
     },
     cellBottom:{
         flexDirection:'row',
@@ -204,7 +315,19 @@ const styles = StyleSheet.create({
        justifyContent:'center',
        alignItems:'center'
       
-    }
+    },
+
+    loadingMore:{
+
+        marginVertical:20
+    },
+
+
+    loadingText:{
+        fontSize:18,
+        color:'red',
+        textAlign:'center'
+    },
 
 
 });
