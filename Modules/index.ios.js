@@ -11,6 +11,7 @@ import {
     Text,
     View,
 } from 'react-native';
+import Baby from './13-23BabyShow/App.js';
 
 // let Listwine = require('./ListView/ListWine');
 // let Loginview = require('./Login/LoginView');
@@ -21,7 +22,7 @@ import {
 // let Shop = require('./RoyceEC/Main/Main');
 // let NetRequset = require('./NetRequest/NetRequest');
 // let Gesture = require('./11-Gesture/Gesture');
-let Baby = require('./13-23BabyShow/MainApp.js');
+
 // let RNFS = require('./react-native-fs/fs.js');
 // let Navigator = require('./React Navigation/Navigation.js');
 export default class Modules extends Component {
